@@ -34,6 +34,10 @@
     </div>
 
     <div>
+        <label>Email</label>
+        <di>
+            <span th:if="${emailExists}">Email already exists</span>
+        </di>
         <div>
             <div>
                 <input type="text" th:value="${user.email}" name="email" placeholder="Enter your Email" required="required"/>
@@ -43,6 +47,9 @@
 
     <div>
         <label>Username</label>
+        <div>
+            <span th:if="${usernameExists}">Username already exists</span>
+        </div>
         <div>
             <div>
                 <input type="text" th:value="${user.username}" name="username"   placeholder="Enter your Username" required="required"/>
@@ -62,7 +69,7 @@
         <label>Verify Password</label>
         <div>
             <div>
-                <input type="password" th:value="${user.verifyPassword}" name="password"  placeholder="Please verify Password" required="required"/>
+                <input type="password" th:value="${user.verifyPassword}" name="verifyPassword"  placeholder="Please verify Password" required="required"/>
             </div>
         </div>
     </div>
