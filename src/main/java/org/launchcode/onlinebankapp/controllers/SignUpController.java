@@ -1,7 +1,7 @@
 package org.launchcode.onlinebankapp.controllers;
 
 import org.launchcode.onlinebankapp.models.User;
-import org.launchcode.onlinebankapp.services.UserService;
+import org.launchcode.onlinebankapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Created by User on 6/27/17.
+ * Created by User on 6/22/17.
  */
 @Controller
-@RequestMapping (value= "signup")
+@RequestMapping (value= "/signup")
 public class SignUpController {
+
 
     @Autowired
     private UserService userService;
@@ -22,13 +23,14 @@ public class SignUpController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String signup(Model model) {
         User user = new User();
+
         model.addAttribute("user", user);
-        return "signup/index";
+        return "signup/sign-up";
     }
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String signupPost(@ModelAttribute("user") User user, Model model) {
+    public String signup(@ModelAttribute("user") User user, Model model) {
 
-        if (userService.checkUserExists(user.getUsername(), user.getEmail())) {
+        if(userService.checkUserExists(user.getUsername(), user.getEmail()))  {
 
             if (userService.checkEmailExists(user.getEmail())) {
                 model.addAttribute("emailExists", true);
@@ -38,11 +40,11 @@ public class SignUpController {
                 model.addAttribute("usernameExists", true);
             }
 
-            return "signup/index";
+            return "signup/sign-up";
         } else {
             userService.save(user);
 
-            return "redirect:";
+            return "redirect:/";
         }
     }
 }

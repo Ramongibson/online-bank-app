@@ -3,7 +3,9 @@
 <head></head>
 <body>
     <div>
-        <div>
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
             <div>
                 <form th:action="@{/login}" method="post">
                     <h2> Please Login!</h2>
@@ -27,6 +29,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
