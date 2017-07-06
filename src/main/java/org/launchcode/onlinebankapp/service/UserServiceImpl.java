@@ -81,8 +81,8 @@ public class UserServiceImpl implements UserService{
             String encryptedPassword = passwordEncoder.encode(user.getPassword());
             user.setPassword(encryptedPassword);
 
-            for (UserRole userRole : userRoles) {
-                roleDao.save(userRole.getRole());
+            for (UserRole ur : userRoles) {
+                roleDao.save(ur.getRole());
             }
 
             user.getUserRoles().addAll(userRoles);
