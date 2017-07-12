@@ -32,6 +32,9 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
+    private AccountService accountService;
+
 
 
     public void save(User user) {
@@ -64,10 +67,24 @@ public class UserServiceImpl implements UserService{
     }
 
     public boolean checkEmailExists(String email) {
-        if (null != findByEmail(email)) {
+        if (null != (findByEmail(email))) {
             return true;
         }
 
+        return false;
+    }
+
+    public boolean checkPasswordsMatch(String password, String verifyPassword)  {
+        if (! password.equals(verifyPassword)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkEmailsMatch(String email, String verifyEmail)  {
+        if (! email.equals(verifyEmail)) {
+            return true;
+        }
         return false;
     }
 
@@ -86,6 +103,9 @@ public class UserServiceImpl implements UserService{
             }
 
             user.getUserRoles().addAll(userRoles);
+
+            user.setCheckingAccount(accountService.createCheckingAccount());
+            user.setSavingsAccount(accountService.createSavingsAccount());
 
             localUser = userDao.save(user);
         }

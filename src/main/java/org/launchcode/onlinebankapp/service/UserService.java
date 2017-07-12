@@ -19,6 +19,10 @@ public interface UserService {
 
     boolean checkEmailExists(String email);
 
+    boolean checkPasswordsMatch(String password, String verifyPassword);
+
+    boolean checkEmailsMatch(String email, String verifyEmail);
+
     void save(User user);
 
     User createUser(User user, Set<UserRole> userRoles);

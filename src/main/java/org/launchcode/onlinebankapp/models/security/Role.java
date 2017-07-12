@@ -10,7 +10,6 @@ import java.util.Set;
 @Entity
 public class Role {
     @Id
-
     private int roleId;
 
     private String name;
