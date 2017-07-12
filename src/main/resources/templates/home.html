@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+    <div>
+        <h2>Checking Account Balance:</h2>
+    </div>
+    <div>
+        <h1><span th:text="${checkingAccount.accountBalance}">...</span></h1>
+    </div>
+        <a th:href="@{/account/checkingAccount}"></a>
+    <div>
+        <span>View Details</span>
+        <h2>Savings Balance: </h2>
+    </div>
+    <div>
+        <h1><span th:text="${savingsAccount.accountBalance}">...</span></h1>
+    </div>
+        <a th:href="@{/account/savingsAccount}"></a>
+    <div>
+        <span>View Details</span>
+    </div>
+    <div>
+        <div>Deposit</div>
+            <a th:href="@{/account/deposit}">
+                <span class="pull-left">Go to Deposit</span>
+            </a>
+    </div>
+    <div>
+        <div>Withdraw</div>
+        <a th:href="@{/account/withdraw}">
+            <span> Go to Withdrawal</span>
+        </a>
+    </div>
+</body>
+</html>

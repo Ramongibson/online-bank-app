@@ -36,31 +36,31 @@ public class SignUpController {
         User user = new User();
 
         model.addAttribute("user", user);
-        return "signup/sign-up";
+        return "sign-up";
     }
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String signup(@ModelAttribute("user") @Valid User user, Errors errors, Model model) {
 
         if(errors.hasErrors()) {
-            return "signup/sign-up";
+            return "sign-up";
         }
         if (userService.checkUsernameExists(user.getUsername())) {
             model.addAttribute("usernameExists", true);
-            return "signup/sign-up";
+            return "sign-up";
         }
         if (userService.checkEmailExists(user.getEmail())) {
             model.addAttribute("emailExists", true);
-            return "signup/sign-up";
+            return "sign-up";
         }
         if (userService.checkPasswordsMatch(user.getPassword(), user.getVerifyPassword())) {
             model.addAttribute("passwordMatch", true);
             model.addAttribute("passwordMatch2", true);
-            return "signup/sign-up";
+            return "sign-up";
         }
         if (userService.checkEmailsMatch(user.getEmail(), user.getVerifyEmail())) {
             model.addAttribute("emailMatch", true);
             model.addAttribute("emailMatch2", true);
-            return "signup/sign-up";
+            return "sign-up";
         } else {
             Set<UserRole> userRoles = new HashSet<>();
             userRoles.add(new UserRole(user, roleDao.findByName("ROLE_USER")));
