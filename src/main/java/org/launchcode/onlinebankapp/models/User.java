@@ -53,7 +53,6 @@ public class User implements UserDetails{
     private String email;
 
     @NotNull
-    @Email
     @Transient
     private String verifyEmail;
 

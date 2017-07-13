@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 public class SavingsTransaction {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Date date;
     private String description;

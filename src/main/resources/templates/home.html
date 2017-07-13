@@ -9,22 +9,20 @@
     <div>
         <h1><span th:text="${checkingAccount.accountBalance}">...</span></h1>
     </div>
-        <a th:href="@{/account/checkingAccount}"></a>
     <div>
-        <span>View Details</span>
-        <h2>Savings Balance: </h2>
+        <a th:href="@{/account/checkingAccount}">View Details</a>
     </div>
+        <h2>Savings Account Balance:</h2>
     <div>
         <h1><span th:text="${savingsAccount.accountBalance}">...</span></h1>
     </div>
-        <a th:href="@{/account/savingsAccount}"></a>
     <div>
-        <span>View Details</span>
+        <a th:href="@{/account/savingsAccount}">View Details</a>
     </div>
     <div>
         <div>Deposit</div>
             <a th:href="@{/account/deposit}">
-                <span class="pull-left">Go to Deposit</span>
+                <span>Go to Deposit</span>
             </a>
     </div>
     <div>

@@ -1,9 +1,6 @@
 package org.launchcode.onlinebankapp.models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -12,9 +9,9 @@ import java.util.Date;
  */
 public class CheckingTransaction {
     @Id
-    @GeneratedValue
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private Date date;
     private String description;
     private String type;

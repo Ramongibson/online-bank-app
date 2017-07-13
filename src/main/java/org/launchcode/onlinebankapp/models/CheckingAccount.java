@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 public class CheckingAccount {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int accountNumber;
     private BigDecimal accountBalance;
@@ -48,5 +48,9 @@ public class CheckingAccount {
 
     public void setCheckingTransactionList(List<CheckingTransaction> checkingTransactionList) {
         this.checkingTransactionList = checkingTransactionList;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }

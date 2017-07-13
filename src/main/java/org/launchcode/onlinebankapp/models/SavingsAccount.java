@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class SavingsAccount {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int accountNumber;
     private BigDecimal accountBalance;
@@ -45,5 +45,9 @@ public class SavingsAccount {
 
     public void setCheckingTransactionList(List<SavingsTransaction> checkingTransactionList) {
         this.savingsTransactionList = checkingTransactionList;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }
