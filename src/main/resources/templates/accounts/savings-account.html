@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<h2>Savings Balance: </h2>
+<div>
+    <h1 th:text="${savingsAccount.accountBalance}">...</h1>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Post Date</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Amount</th>
+            <th>Available Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="savingsTransaction : ${checkingTransactionList}">
+            <td data-th-text="${savingsTransaction.date}">...</td>
+            <td data-th-text="${savingsTransaction.description}">...</td>
+            <td data-th-text="${savingsTransaction.type}">...</td>
+            <td data-th-text="${savingsTransaction.status}">...</td>
+            <td data-th-text="${savingsTransaction.amount}">...</td>
+            <td data-th-text="${savingsTransaction.availableBalance}">...</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
