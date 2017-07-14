@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<form th:action="@{/account/deposit}" method="post">
+    <div>
+        <label>1. Please select the account you would like to deposit:</label>
+        <select th:value="${accountType}" name="accountType" required="required">
+            <option disabled="disabled" selected="selected"> -- select account -- </option>
+            <option>Checking</option>
+            <option>Savings</option>
+        </select>
+    </div>
+    <div>
+        <label>2.Amount to deposit: </label>
+        <span>Amount $</span>
+        <input th:value="${amount}" type="text" name="amount"/>
+    </div>
+    <!-- Disable Spring Security csrf-->
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <button type="submit">Deposit</button>
+</form>
+</body>
+</html>
