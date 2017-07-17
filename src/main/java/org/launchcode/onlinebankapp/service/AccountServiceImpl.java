@@ -17,7 +17,6 @@ import java.util.Date;
  */
 @Service
 @Transactional
-
 public class AccountServiceImpl implements AccountService {
 
     private static int nextAccountNumber = 11223167;
@@ -30,6 +29,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TransactionService transactionService;
+
 
     public CheckingAccount createCheckingAccount() {
         CheckingAccount checkingAccount = new CheckingAccount();
@@ -62,6 +65,7 @@ public class AccountServiceImpl implements AccountService {
             Date date = new Date();
 
             CheckingTransaction checkingTransaction = new CheckingTransaction(date, "Deposit to Checking Account", "Account", "Finished", amount, checkingAccount.getAccountBalance(), checkingAccount);
+            transactionService.saveCheckingDepositTransaction(checkingTransaction);
 
         } else if (accountType.equalsIgnoreCase("Savings")) {
             SavingsAccount savingsAccount = user.getSavingsAccount();
@@ -70,6 +74,7 @@ public class AccountServiceImpl implements AccountService {
 
             Date date = new Date();
             SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Deposit to Savings Account", "Account", "Finished", amount, savingsAccount.getAccountBalance(), savingsAccount);
+            transactionService.saveSavingsDepositTransaction(savingsTransaction);
         }
     }
     public void withdraw(String accountType, double amount, Principal principal) {
@@ -93,6 +98,18 @@ public class AccountServiceImpl implements AccountService {
 
         }
     }
+    public boolean checkValidAmount(String amount) {
+        try
+        {
+            Double.parseDouble(amount);
+        }
+        catch (NumberFormatException e)
+        {
+            return true;
+        }
+        return false;
+    }
+
 
     private int accountGen() {
         return ++nextAccountNumber;

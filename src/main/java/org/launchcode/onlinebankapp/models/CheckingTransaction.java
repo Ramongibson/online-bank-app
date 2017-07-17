@@ -1,12 +1,14 @@
 package org.launchcode.onlinebankapp.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
  * Created by User on 6/22/17.
  */
+@Entity
 public class CheckingTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

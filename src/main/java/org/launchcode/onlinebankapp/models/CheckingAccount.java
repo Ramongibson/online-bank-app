@@ -1,5 +1,6 @@
 package org.launchcode.onlinebankapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.persistence.*;
@@ -18,7 +19,7 @@ public class CheckingAccount {
     private BigDecimal accountBalance;
 
     @OneToMany(mappedBy = "checkingAccount", cascade = CascadeType.ALL, fetch =FetchType.LAZY)
-    @Transient
+    @JsonIgnore
     private List<CheckingTransaction> checkingTransactionList;
 
     public Long getId() {

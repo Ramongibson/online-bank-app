@@ -27,7 +27,7 @@ public class SavingsTransaction {
     public SavingsTransaction() {
     }
 
-    public SavingsTransaction(Date date, String description, String tye, String status, double amount, BigDecimal availableBalance, SavingsAccount savingsAccount) {
+    public SavingsTransaction(Date date, String description, String type, String status, double amount, BigDecimal availableBalance, SavingsAccount savingsAccount) {
         this.date = date;
         this.description = description;
         this.type = type;
@@ -37,14 +37,6 @@ public class SavingsTransaction {
         this.savingsAccount = savingsAccount;
     }
 
-    public SavingsTransaction(Date date, String description, String tye, String status, double amount, BigDecimal availableBalance) {
-        this.date = date;
-        this.description = description;
-        this.type = type;
-        this.status = status;
-        this.amount = amount;
-        this.availableBalance = availableBalance;
-    }
 
     public Long getId() {
         return id;

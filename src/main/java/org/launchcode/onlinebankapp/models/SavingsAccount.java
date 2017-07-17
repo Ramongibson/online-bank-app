@@ -1,5 +1,8 @@
 package org.launchcode.onlinebankapp.models;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,10 +16,11 @@ public class SavingsAccount {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int accountNumber;
+
     private BigDecimal accountBalance;
 
     @OneToMany (mappedBy = "savingsAccount", cascade = CascadeType.ALL, fetch =FetchType.LAZY)
-    @Transient
+    @JsonIgnore
     private List<SavingsTransaction> savingsTransactionList;
 
     public Long getId() {
@@ -39,12 +43,12 @@ public class SavingsAccount {
         this.accountBalance = accountBalance;
     }
 
-    public List<SavingsTransaction> getCheckingTransactionList() {
+    public List<SavingsTransaction> getSavingsTransactionList() {
         return savingsTransactionList;
     }
 
-    public void setCheckingTransactionList(List<SavingsTransaction> checkingTransactionList) {
-        this.savingsTransactionList = checkingTransactionList;
+    public void setSavingsTransactionList(List<SavingsTransaction> savingsTransactionList) {
+        this.savingsTransactionList = savingsTransactionList;
     }
 
     public void setAccountNumber(int accountNumber) {
