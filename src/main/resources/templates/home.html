@@ -1,35 +1,102 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<head th:replace="fragments :: fragments">
 </head>
 <body>
-    <div>
-        <h2>Checking Account Balance:</h2>
+<head th:replace="fragments :: navbar">
+</head>
+<div class="container main">
+    <div class="row">
+        <div class="col-lg-12">
+        </div>
     </div>
-    <div>
-        <h1><span th:text="${checkingAccount.accountBalance}">...</span></h1>
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h2>Checking Balance: </h2>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <h1><i class="fa fa-usd" aria-hidden="true"></i> <span th:text="${checkingAccount.accountBalance}">...</span></h1>
+                        </div>
+                    </div>
+                </div>
+                <a th:href="@{/account/checkingAccount}">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h2>Savings Balance: </h2>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <h1><i class="fa fa-usd" aria-hidden="true"></i> <span th:text="${savingsAccount.accountBalance}">...</span></h1>
+                        </div>
+                    </div>
+                </div>
+                <a th:href="@{/account/savingsAccount}">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-yellow">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-credit-card fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div>Deposit</div>
+                        </div>
+                    </div>
+                </div>
+                <a th:href="@{/account/deposit}">
+                    <div class="panel-footer">
+                        <span class="pull-left">Go to Deposit</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-red">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-money fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div>Withdraw</div>
+                        </div>
+                    </div>
+                </div>
+                <a th:href="@{/account/withdraw}">
+                    <div class="panel-footer">
+                        <span class="pull-left">Go to Withdrawal</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
-    <div>
-        <a th:href="@{/account/checkingAccount}">View Details</a>
-    </div>
-        <h2>Savings Account Balance:</h2>
-    <div>
-        <h1><span th:text="${savingsAccount.accountBalance}">...</span></h1>
-    </div>
-    <div>
-        <a th:href="@{/account/savingsAccount}">View Details</a>
-    </div>
-    <div>
-        <div>Deposit</div>
-            <a th:href="@{/account/deposit}">
-                <span>Go to Deposit</span>
-            </a>
-    </div>
-    <div>
-        <div>Withdraw</div>
-        <a th:href="@{/account/withdraw}">
-            <span> Go to Withdrawal</span>
-        </a>
-    </div>
+</div>
+<div th:replace="fragments :: scripts">
+</div>
 </body>
 </html>

@@ -31,7 +31,7 @@ public class User implements UserDetails{
     private String username;
 
     @NotNull
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$", message = "Password must contain, one uppercase, one lowercase, one digit and one special character.")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$", message = "Password must contain, 1 uppercase, 1 lowercase, 2 digits & 1 special character.")
     private String password;
 
     @NotNull

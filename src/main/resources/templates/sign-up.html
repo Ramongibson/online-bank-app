@@ -1,86 +1,130 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<head th:replace="fragments :: fragments">
 </head>
 <body>
-<h1>Sign Up</h1>
-<form method="post" th:action="@{/signup}">
-    <div>
-        <label>First Name</label><span th:errors="${user.firstName}" class="error"></span>
-        <div>
-            <div>
-                <input type="text" th:value="${user.firstName}" name="firstName"  placeholder="Enter your first name"/>
+<div class="container">
+    <div class="row main">
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+                <h1 class="title">Sign Up</h1>
+                <hr />
+            </div>
+        </div>
+        <div class="main-login main-center">
+            <form class="form-horizontal" method="post" th:action="@{/signup}">
+
+                <div class = "form-group">
+                    <label for="firstName" class="cols-es-2 control-label">First Name</label>
+                    <span th:errors="${user.firstName}" class="alert alert-danger pull-top form-control"></span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.firstName}" id="firstName" name="firstName"  placeholder="Enter your first name"/>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="cols-sm-2 control-label">Last Name</label>
+                    <span th:errors="${user.lastName}" class="alert alert-danger pull-top form-control"></span>
+                    <div class= "cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.lastName}" id="lastName" name="lastName"   placeholder="Enter your last name"/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="phoneNumber" class="cols-sm-2 control-label">Phone</label>
+                    <span th:errors="${user.phoneNumber}" class="alert alert-danger pull-top form-control"></span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" th:value="${user.phoneNumber}" id="phoneNumber" name="phoneNumber"   placeholder="xxx-xxx-xxxx"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Email</label><span th:if="${emailExists}" class="alert alert-danger pull-top">Email already exists</span>
+                    <span th:if="${emailMatch}" class="alert alert-danger pull-top form-control">Email doesn't Match.</span>
+                    <span th:errors="${user.email}" class="alert alert-danger pull-top form-control"></span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.email}" id="email" name="email" placeholder="Enter your Email"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="verifyEmail" class="cols-sm-2 control-label">Verify Email</label>
+                    <span th:errors="${user.verifyEmail}" class="alert alert-danger pull-top form-control"></span>
+                    <span th:if="${emailMatch2}" class="alert alert-danger pull-top form-control">Email doesn't Match.</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.verifyEmail}" id="verifyemail" name="verifyEmail"  placeholder="Please verify Email"/>
+                        </div>
+                    </div>
+                 </div>
+
+
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Username</label>
+                    <span class="alert alert-danger pull-top form-control" th:if="${usernameExists}">Username already exists</span>
+                    <span th:errors="${user.username}" class="alert alert-danger pull-top form-control"></span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.username}" id="username" name="username"  placeholder="Enter your Username"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <span th:errors="${user.password}" class="alert alert-danger pull-right form-control"></span>
+                    <span th:if="${passwordMatch}" class="alert alert-danger pull-top form-control">Password doesn't Match.</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" th:value="${user.password}" id="password" name="password"  placeholder="Enter your Password"/>
+                        </div>
+                    </div>
+                 </div>
+
+                <div class="form-group">
+                    <label for="verifyPassword" class="cols-sm-2 control-label">Verify Password</label>
+                     <span th:errors="${user.verifyPassword}" class="alert alert-danger pull-top form-control"></span>
+                     <span th:if="${passwordMatch2}" class="alert alert-danger pull-top form-control">Password doesn't Match.</span>
+                     <div class="cols-sm-10">
+                         <div class="input-group">
+                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" th:value="${user.verifyPassword}" id="verifyPassword" name="verifyPassword"  placeholder="Please verify Password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Sign up!</button>
+                </div>
+
+                <hr/>
+
+                <div class="form-group">
+                     <a class="btn btn-primary btn-lg btn-block login-button" th:href="@{/}">Cancel</a>
+                </div>
+            </form>
             </div>
         </div>
     </div>
 
-    <div>
-        <label>Last Name</label><span th:errors="${user.lastName}" class="error"></span>
-        <div>
-            <div>
-                <input type="text" th:value="${user.lastName}" name="lastName"  placeholder="Enter your last name"/>
-            </div>
-        </div>
+    <div th:replace="fragments :: scripts">
     </div>
 
-    <div>
-        <label>Phone</label><span th:errors="${user.phoneNumber}" class="error"></span>
-        <div>
-            <div>
-                <input type="text" th:value="${user.phoneNumber}" name="phoneNumber"   placeholder="xxx-xxx-xxxx"/>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <label>Email</label><span th:if="${emailExists}">Email already exists</span><span th:if="${emailMatch}">Email doesn't Match.</span>
-        <span th:errors="${user.email}" class="error"></span>
-        <div>
-            <div>
-                <input type="text" th:value="${user.email}" name="email" placeholder="Enter your Email"/>
-            </div>
-        </div>
-    </div>
-    <div>
-        <label>Verify Email</label><span th:errors="${user.verifyEmail}" class="error"></span><span th:if="${emailMatch2}">Email doesn't Match.</span>
-        <div>
-            <div>
-                <input type="text" th:value="${user.verifyEmail}" name="verifyEmail"  placeholder="Please verify Email"/>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <label>Username</label><span th:if="${usernameExists}">Username already exists</span><span th:errors="${user.username}" class="error"></span>
-        <div>
-            <div>
-                <input type="text" th:value="${user.username}" name="username"   placeholder="Enter your Username"/>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <label>Password</label><span th:errors="${user.password}" class="error"></span><span th:if="${passwordMatch}">Password doesn't Match.</span>
-        <div>
-            <div>
-                <input type="password" th:value="${user.password}" name="password"  placeholder="Enter your Password"/>
-            </div>
-        </div>
-    </div>
-    <div>
-        <label>Verify Password</label><span th:errors="${user.verifyPassword}" class="error"></span><span th:if="${passwordMatch2}">Password doesn't Match.</span>
-        <div>
-            <div>
-                <input type="password" th:value="${user.verifyPassword}" name="verifyPassword"  placeholder="Please verify Password"/>
-            </div>
-        </div>
-    </div>
-    <div>
-        <button type="submit">Sign up!</button>
-    </div>
-    <div>
-        <a th:href="@{/}">Cancel</a>
-    </div>
-</form>
 </body>
 </html>

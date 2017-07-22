@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head></head>
+<head th:replace="fragments :: fragments"/>
 <body>
-    <div>
-        <div th:if="${param.error}">
-            Invalid username or password.
-        </div>
-            <div>
-                <form th:action="@{/login}" method="post">
-                    <h2> Please Login!</h2>
-                    <div>
-                        <label>Username</label>
-                        <input type="text" placeholder="Username" name="username" />
+    <div class="container">
+        <div class="row ">
+            <div class="main-center">
+                <div th:if="${param.error}" class="alert alert-danger">
+                    Invalid username or password.
+                </div>
+                <div th:if="${param.logout}" class="alert alert-danger">
+                     You have been logged out.
+                </div>
+                <form class="form-signin" th:action="@{/login}" method="post">
+                    <h2 class="forn-signin-heading"> Please Login!</h2>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" placeholder="Username" id ="username" name="username" autofucus="autofocus" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password" >Password</label>
+                        <input type="password" placeholder="Password" name="password" id="password"/>
                     </div>
                     <div>
-                        <label>Password</label>
-                        <input type="password" placeholder="Password"
-                               name="password"/>
+                        <input type="checkbox" name="remember-me" id="remember-me"/> Remember me
                     </div>
-                    <div>
-                        <input type="checkbox" name="remember-me"/> Remember me
-                    </div>
-                    <button type="submit">Login</button>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Login  <i class="fa fa-sign-in"></i></button>
                 </form>
 
-                <div>
-                    <a type="submit" th:href="@{/signup}">Sign up!</a>
+                <hr/>
+
+                <div class="form-group">
+                    <a type="submit" class="btn btn-info btn-lg btn-block login-button" th:href="@{/signup}">Sign up!</a>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 </html>
