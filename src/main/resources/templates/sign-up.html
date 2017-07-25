@@ -100,7 +100,7 @@
                 <div class="form-group">
                     <label for="verifyPassword" class="cols-sm-2 control-label">Verify Password</label>
                      <span th:errors="${user.verifyPassword}" class="alert alert-danger pull-top form-control"></span>
-                     <span th:if="${passwordMatch2}" class="alert alert-danger pull-top form-control">Password doesn't Match.</span>
+                     <span th:if="${passwordMatch}" class="alert alert-danger pull-top form-control">Password doesn't Match.</span>
                      <div class="cols-sm-10">
                          <div class="input-group">
                              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
