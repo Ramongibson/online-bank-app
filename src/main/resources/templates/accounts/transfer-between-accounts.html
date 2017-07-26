@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: fragments">
+</head>
+<body>
+<head th:replace="fragments :: navbar">
+</head>
+
+<div class="container main">
+    <div class="row">
+        <div class="col-md-6">
+            <form th:action="@{/transfer/betweenAccounts}" method="post">
+                <div class="form-group">
+                    <label>1. Please select the account you would like to transfer From:</label>
+                    <select th:value="${transferFrom}" name="transferFrom">
+                        <option  disabled="disabled" selected="selected"> -- select your account -- </option>
+                        <option value="Checking">Checking</option>
+                        <option value="Savings">Savings</option>
+                    </select>
+                    <br />
+                    <span th:if="${invalidAccount} " class="alert alert-danger pull-right">Please select account!</span>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Please select the account you would like to transfer To:</label>
+                    <select th:value="${transferTo}" name="transferTo">
+                        <option  disabled="disabled" selected="selected"> -- select your account -- </option>
+                        <option value="Checking">Checking</option>
+                        <option value="Savings">Savings</option>
+                    </select>
+                    <span th:if="${invalidAccount2} " class="alert alert-danger pull-right">Please select account!</span>
+                    <br />
+                </div>
+
+                <div class="form-group">
+                    <label>3.Amount to transfer: </label>
+                    <span>Amount $</span>
+                    <input th:value="${amount}" type="text" name="amount"/>
+                    <span th:if="${invalidAmount}" class="alert alert-danger pull-right">Invalid amount</span>
+                </div>
+
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Transfer</button>
+            </form>
+            <div class="col-md-6">
+            </div>
+            <div th:replace="fragments :: scripts">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

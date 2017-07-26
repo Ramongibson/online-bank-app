@@ -1,6 +1,8 @@
 package org.launchcode.onlinebankapp.service;
 
+import org.launchcode.onlinebankapp.models.CheckingAccount;
 import org.launchcode.onlinebankapp.models.CheckingTransaction;
+import org.launchcode.onlinebankapp.models.SavingsAccount;
 import org.launchcode.onlinebankapp.models.SavingsTransaction;
 
 import java.util.List;
@@ -21,4 +23,6 @@ public interface TransactionService {
     void saveCheckingWithdrawTransaction(CheckingTransaction checkingTransaction);
 
     void saveSavingsWithdrawTransaction(SavingsTransaction savingsTransaction);
+
+    void betweenAccountsTransfer(String transferFrom, String transferTo, String amount, CheckingAccount checkingAccount, SavingsAccount savingsAccount);
 }

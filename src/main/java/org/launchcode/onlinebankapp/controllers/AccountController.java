@@ -88,7 +88,7 @@ public class AccountController {
             model.addAttribute("invalidAccount", true);
             return "accounts/withdraw";
         }
-        if (accountService.checkValidAmount(amount)) {
+        else if (accountService.checkValidAmount(amount)) {
             model.addAttribute("invalidAmount", true);
             return "accounts/withdraw";
         } else {
