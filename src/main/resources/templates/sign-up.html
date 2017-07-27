@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label for="verifyEmail" class="cols-sm-2 control-label">Verify Email</label>
                     <span th:errors="${user.verifyEmail}" class="alert alert-danger pull-top form-control"></span>
-                    <span th:if="${emailMatch2}" class="alert alert-danger pull-top form-control">Email doesn't Match.</span>
+                    <span th:if="${emailMatch}" class="alert alert-danger pull-top form-control">Email doesn't Match.</span>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>

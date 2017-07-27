@@ -54,12 +54,10 @@ public class SignUpController {
         }
         if (userService.checkPasswordsMatch(user.getPassword(), user.getVerifyPassword())) {
             model.addAttribute("passwordMatch", true);
-            model.addAttribute("passwordMatch2", true);
             return "sign-up";
         }
         if (userService.checkEmailsMatch(user.getEmail(), user.getVerifyEmail())) {
             model.addAttribute("emailMatch", true);
-            model.addAttribute("emailMatch2", true);
             return "sign-up";
         } else {
             Set<UserRole> userRoles = new HashSet<>();
